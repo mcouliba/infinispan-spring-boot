@@ -15,5 +15,11 @@ public class ProductServiceImpl implements ProductService {
         return defaultCacheRepository.find(key);
     }
 
-    public Product insert(String key, Product value) {return defaultCacheRepository.insert(key, value); }
+    public Product insert(String key, Product value) {
+        return defaultCacheRepository.insert(key, value);
+    }
+
+    public Product insertWithTTL(String key, Product value, Long ttl) {
+        return defaultCacheRepository.insertWithTTL(key, value, ttl);
+    }
 }

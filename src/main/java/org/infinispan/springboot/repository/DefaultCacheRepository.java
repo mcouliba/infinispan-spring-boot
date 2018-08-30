@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class DefaultCacheRepository {
@@ -33,4 +34,8 @@ public class DefaultCacheRepository {
 	public Product insert(String key, Product value){
 		return remoteCache.put(key, value);
 	}
+
+    public Product insertWithTTL(String key, Product value, Long ttl){
+        return remoteCache.put(key, value, ttl, TimeUnit.SECONDS);
+    }
 }
